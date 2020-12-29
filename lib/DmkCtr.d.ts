@@ -1,0 +1,35 @@
+import { IVideo } from './interface/IVideo.interface';
+import { IDmkFrame } from './interface/IDmkFrame.interface';
+import { IDmkData } from './interface/IDmkDate.interface';
+import { IDmkOpt } from './interface/IDmkOpt.interface';
+import { DmkLayer } from './DmkLayer';
+export declare class DmkCtr {
+    opt: IDmkOpt;
+    video: IVideo;
+    private _timeFrozen;
+    private _frameRecord;
+    private _unComsumed;
+    private _frameHooks;
+    private _dmkFragments;
+    private _currentIdx;
+    private _currentFragment;
+    private _layerList;
+    private _dmkFrames;
+    layerMap: Map<string, DmkLayer>;
+    constructor(danmukeList: Array<IDmkData>, opt: IDmkOpt, video: IVideo);
+    private _normalizeLayerOpt;
+    private _initOpt;
+    private _init;
+    private _setDanmukeIn;
+    private _setUnConsumeDmkIn;
+    private _nextFrame;
+    reset(): void;
+    setFrameHooks(key: string, hookFn: Function): void;
+    deleteDmk(id: string): void;
+    addFrame(frame: IDmkFrame): void;
+    addLayer(layer: DmkLayer, layerName: string): void;
+    getSortedLayerList(): DmkLayer[];
+    addDmkList(danmukeList: Array<IDmkData>): void;
+    stop(): void;
+    start(): void;
+}
