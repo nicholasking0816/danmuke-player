@@ -1,5 +1,5 @@
 import { StaticDanmuke } from './StaticDanmuke';
-import { DmkCtr } from './DmkCtr';
+import { DmkCtrl } from './DmkCtrl';
 import { IDmkData } from "./interface/IDmkDate.interface";
 import { DmkTrack } from "./DmkTrack";
 import { Danmuke } from './Danmuke';
@@ -11,12 +11,12 @@ export class StaticDmkTrack extends DmkTrack {
     super(level);
   }
 
-  init(dmkLayer: DmkLayer, ctr: DmkCtr) {
+  init(dmkLayer: DmkLayer, ctr: DmkCtrl) {
 
   }
 
-  getDmkInstance(dmkData: IDmkData, ctr: DmkCtr) {
-    return new StaticDanmuke(dmkData, this, {
+  getDmkInstance(dmkData: IDmkData, ctr: DmkCtrl) {
+    return new StaticDanmuke(dmkData, this, ctr,{
       top: (this.level - 1) * 30,
       left: ctr.video.width,
       width: dmkData.size.width,
@@ -27,7 +27,7 @@ export class StaticDmkTrack extends DmkTrack {
     })
   }
 
-  isCanIn(dmkData: IDmkData, ctr: DmkCtr) {
+  isCanIn(dmkData: IDmkData, ctr: DmkCtrl) {
     let isCanIn = dmkData.isUnConsume && (!this.getLast() || this.getLast().isInView);
     return isCanIn;
   }

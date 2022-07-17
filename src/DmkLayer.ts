@@ -1,4 +1,4 @@
-import { DmkCtr } from './DmkCtr';
+import { DmkCtrl } from './DmkCtrl';
 import { IDmkData } from './interface/IDmkDate.interface';
 import { ILayerOpt } from "./interface/ILayerOpt.interface";
 import { DmkTrack } from './DmkTrack';
@@ -6,7 +6,9 @@ import { Danmuke } from './Danmuke';
 
 export class DmkLayer {
   trackList: Array<DmkTrack> = []; 
-  private opt: ILayerOpt = {};
+  private opt: ILayerOpt = {
+
+  };
   count = 0
 
   constructor(private trackType: any, opt?: ILayerOpt) {
@@ -15,13 +17,12 @@ export class DmkLayer {
     }
   }
 
-  setDanmukeIn(dmkData: IDmkData, dmkCtr: DmkCtr) {
+  setDanmukeIn(dmkData: IDmkData, dmkCtr: DmkCtrl) { // 弹幕进场
     return !!this.trackList.find((track: DmkTrack) => {
       if(track.isCanIn(dmkData, dmkCtr)) {
         let dmk: Danmuke = track.getDmkInstance(dmkData, dmkCtr);
         this.count ++;
         track.addDanmuke(dmk);
-        dmkCtr.addFrame(dmk);
         return true;
       }
     })
@@ -38,19 +39,20 @@ export class DmkLayer {
   }
 
   getOption(key: string) {
-    return this.opt[key];
+    return this.opt[key]; 
   }
 
-  genTracks(dmkCtr: DmkCtr) {
+  genTracks(dmkCtr: DmkCtrl) {
     let trackHeight = this.opt.trackHeight, level = 1;
     this.trackList = [];
     do {
       let track = new this.trackType(level);
       track.init(this, dmkCtr);
-      dmkCtr.addFrame(track);
       this.trackList.push(track);
       level ++;
       trackHeight += this.opt.trackHeight;
-    } while(trackHeight <= dmkCtr.video.height) 
+    } while(trackHeight <= dmkCtr.video.height && (!this.opt.trackCount || level < this.opt.trackCount)) 
   }
+
+
 }

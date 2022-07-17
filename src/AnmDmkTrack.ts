@@ -3,7 +3,7 @@ import { DmkUtil } from './DmkUtil';
 import { IDmkFrame } from './interface/IDmkFrame.interface';
 import { IDmkData } from "./interface/IDmkDate.interface";
 import { Danmuke } from "./Danmuke";
-import { DmkCtr } from "./DmkCtr";
+import { DmkCtrl } from "./DmkCtrl";
 import { DmkTrack } from "./DmkTrack";
 import { DmkLayer } from './DmkLayer';
 
@@ -12,16 +12,17 @@ declare const window: any;
 export class AnmDmkTrack extends DmkTrack implements IDmkFrame {
   private _ctr: DmkLayer;
   private _baseSize: any;
+  layer: DmkLayer;
   constructor(level: number) {
     super(level);
   }
 
-  init(dmkLayer: DmkLayer, ctr: DmkCtr) {
+  init(dmkLayer: DmkLayer, ctr: DmkCtrl) {
     this._ctr = dmkLayer;
     this._baseSize = DmkUtil.measureSize('啊', ctr.opt.fontSize, ctr.opt.lineHeight);
   }
 
-  getDmkInstance(dmkData: IDmkData, ctr: DmkCtr) {
+  getDmkInstance(dmkData: IDmkData, ctr: DmkCtrl) {
     let multiple =  (dmkData.size.width + ctr.video.width) / (this._baseSize.width + ctr.video.width);
     let opt: any = {
       left: ctr.video.width,
@@ -32,14 +33,14 @@ export class AnmDmkTrack extends DmkTrack implements IDmkFrame {
       fontSize: ctr.opt.fontSize,
       speed: ctr.opt.baseSpeed * multiple
     }
-    return new AnmDanmuke(dmkData, opt);
+    return new AnmDanmuke(dmkData, this, ctr,opt);
   }
 
   isDead() {
     return false;
   }
 
-  isCanIn(dmkData: IDmkData, ctr: DmkCtr) {
+  isCanIn(dmkData: IDmkData, ctr: DmkCtrl) {
     if (!this.getLast()) return true;
     if (!this.getLast().isInView) return false;
     if (dmkData.content.length > this.getLast().content.length) {

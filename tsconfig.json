@@ -2,15 +2,17 @@
   "compilerOptions": {
     "lib": ["ES2015","DOM"],
     "target": "ES6",
+    "module": "commonjs",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "declaration": true,
-    "sourceMap": false,
-    "outDir": "lib"
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "outDir": "dist"
   },
   "include": [
-    "**/*"
-  ],
-  "exclude": []
+    "src/**/*"
+  ]
 }

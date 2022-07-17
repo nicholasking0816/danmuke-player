@@ -1,9 +1,8 @@
 import { IDmkFrame } from './interface/IDmkFrame.interface';
-import { DmkFragment } from './DmkFragment';
-import { DmkCtr } from './DmkCtr';
 import { IDmkData } from "./interface/IDmkDate.interface";
 import { Danmuke } from './Danmuke';
 import { DmkLayer } from './DmkLayer';
+import { DmkCtrl } from './DmkCtrl';
 
 export abstract class DmkTrack implements IDmkFrame {
   private _dmkQueue: Array<Danmuke>  = [];
@@ -27,12 +26,14 @@ export abstract class DmkTrack implements IDmkFrame {
       let dmk = this._dmkQueue[index];
       if ( this.isCanOut(dmk)) {
         this._dmkQueue.splice(index, 1);
-        dmk._isDead = true;
+        dmk.dead();
       } else {
         index ++;
       }
     }
   }
+
+  
 
   getDmkQueue() {
     return this._dmkQueue;
@@ -43,8 +44,8 @@ export abstract class DmkTrack implements IDmkFrame {
     return this._dmkQueue[this._dmkQueue.length - 1];
   }
 
-  abstract init(dmkLayer: DmkLayer, ctr: DmkCtr): void;
-  abstract getDmkInstance(dmkData: IDmkData, ctr: DmkCtr): Danmuke;
-  abstract isCanIn(dmkData: IDmkData, ctr: DmkCtr): boolean;
+  abstract init(dmkLayer: DmkLayer, ctr: DmkCtrl): void;
+  abstract getDmkInstance(dmkData: IDmkData, ctr: DmkCtrl): Danmuke;
+  abstract isCanIn(dmkData: IDmkData, ctr: DmkCtrl): boolean;
   abstract isCanOut(dmkData: Danmuke): boolean;
 }

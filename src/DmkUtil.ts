@@ -31,10 +31,22 @@ export class DmkUtil {
 
   static sizeMesurer = null;
 
+  static _timeoutRef = null;
+
   static measureSize(content: string, fontSize?: number, lineHeight?: number) {
+    if (DmkUtil._timeoutRef) clearTimeout(DmkUtil._timeoutRef);
+    DmkUtil._timeoutRef = setTimeout(() => {
+      if (DmkUtil.sizeMesurer) {
+        document.body.removeChild(DmkUtil.sizeMesurer);
+        DmkUtil.sizeMesurer = null;
+        DmkUtil._timeoutRef = null;
+      }
+    })
     if (!DmkUtil.sizeMesurer) {
       let msr = DmkUtil.sizeMesurer = document.createElement('div');
       msr.className = "text-len-measurer";
+      msr.style.position = 'absolute';
+      msr.style.opacity = '0';
       document.body.appendChild(msr);
     }
     fontSize && (DmkUtil.sizeMesurer.style.fontSize = fontSize + 'px');

@@ -1,0 +1,39 @@
+.danmuke-player-demo {
+    .video-wrapper {
+        margin: 0 auto;
+        position: relative;
+        width: 1000px;
+        height: 562px;
+        overflow: hidden;
+        video {
+            width: 100%;
+            height: 100%;
+        }
+        .danmuke-node {
+            color: white;
+            text-shadow:0px 0px 3px #000;
+        }
+    }
+    .send-danmuke {
+        margin: 0 auto;
+        width: 1000px;
+        .normal-danmuke, .advance-danmuke {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+            button {
+                padding: 10px;
+                flex-shrink: 0;
+            }
+
+            input {
+                flex-grow: 1;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-right: 10px;
+                font-size: 18px;
+            }
+        }
+    }
+}
+

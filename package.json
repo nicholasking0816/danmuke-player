@@ -1,13 +1,14 @@
 {
   "name": "danmuke-player",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A danmuke player",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "dist/index.js",
+  "directories": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "publish": "rimraf dist && tsc && npm publish",
+    "start": "webpack-dev-server"
   },
   "keywords": [
     "danmuke",
@@ -17,5 +18,21 @@
     "angular"
   ],
   "author": "nicholasking0816",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "18.0.15",
+    "typescript": "^4.7.4",
+    "css-loader": "5.2.6",
+    "html-webpack-plugin": "5.5.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.53.0",
+    "sass-loader": "12.1.0",
+    "style-loader": "2.0.0",
+    "ts-loader": "9.3.1",
+    "uuid": "8.3.2",
+    "webpack": "5.73.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.9.3"
+  }
 }

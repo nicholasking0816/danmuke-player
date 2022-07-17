@@ -1,5 +1,5 @@
-import { DmkCtr } from '../DmkCtr';
+import { DmkCtrl } from '../DmkCtrl';
 export interface IDmkFrame {
-  nextFrame(ctr?: DmkCtr): void;
+  nextFrame(ctr?: DmkCtrl): void;
   isDead(): boolean;
 }

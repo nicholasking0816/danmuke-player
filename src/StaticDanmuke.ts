@@ -1,23 +1,20 @@
 import { IDmkData } from './interface/IDmkDate.interface';
 import { StaticDmkTrack } from './StaticDmkTrack';
 import { Danmuke } from "./Danmuke";
+import { DmkCtrl } from './DmkCtrl';
 
 export class StaticDanmuke extends Danmuke {
-  constructor(dmkData: IDmkData, private tract: StaticDmkTrack, opt: any) {
-    super(dmkData);
+  constructor(dmkData: IDmkData, private tract: StaticDmkTrack, ctrl: DmkCtrl, opt: any) {
+    super(dmkData, tract, ctrl);
     this.opt = {
       isCanOut: false, 
       videoWidth: opt.videoWidth,
       width: opt.width
     };
-    this.styles = {
-      top: opt.top + 'px' ,
-      left: opt.left + 'px',
-      width: opt.width + 'px',
-      fontSize: opt.fontSize + 'px',
-      lineHeight: opt.lineHeight + 'px',
-      color: 'red'
-    }
+    
+    ['left', 'top', 'width', 'height', 'fontSize', 'lineHeight'].forEach(key => this.styles[key] = dmkData[key] || opt[key] + 'px');
+    ['color'].forEach(key => this.styles[key] = dmkData[key] || opt[key]);
+    this.styles.zIndex = '102'
   }
   nextFrame() {
     if (this.isInView || !this.tract.canShow) {
