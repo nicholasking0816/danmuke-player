@@ -79,6 +79,67 @@ video.onpause = () => {
 
 ```
 
+
+# DanmukePlayer API
+
+### danmukePlayer.start()
+
+    播放弹幕
+
+### danmukePlayer.stop()
+
+    停止播放弹幕
+
+### danmukePlayer.reset()
+
+    弹幕清屏
+
+### danmukePlayer.dataToView()
+
+    生成弹幕节点
+
+### danmukePlayer.clean()
+
+    清除弹幕状态为deaded 的弹幕对应的弹幕节点
+
+### danmukePlayer.addDmkLayer(layer: DmkLayer, name: string)
+
+    添加自定义弹幕层
+
+#### 参数
+    layer: 弹幕层实例
+    name: 弹幕层名称
+
+### danmukePlayer.setHooks(key: string, hookFn: Function)
+    
+    添加钩子函数
+    
+```javascript
+danmukePlayer.setHooks('beforeFrame', function(ctrl: DmkCtrl) { // beforeFrame 在弹幕下一帧播放前执行
+    console.log('beforeFrame ...')
+})
+
+danmukePlayer.setHooks('afterFrame', function(ctrl: DmkCtrl) { // afterFrame 在弹幕下一帧播放后执行
+    console.log('afterFrame ...')
+})
+```
+
+### danmukePlayer.deleteDmk(id: string)
+
+    根据弹幕id删除弹幕
+
+### danmukePlayer.getActiveDmks()
+    
+    获取所有正在播放中的弹幕
+
+### danmukePlayer.getSortedLayerList()
+    
+    返回包含所有弹幕层的数组，数组里的弹幕层已按弹幕层的priority排好序
+
+### danmukePlayer.addDmkList(danmukeList) 
+    
+    添加弹幕数据
+
 # 添加自定义高级弹幕层
 
 弹幕默认的播放方式和大多数视频网站一样是从右到左的横向平移, 但有时候我们想要让弹幕有不一样的播放方式(例如bilibili的高级弹幕功能), 
@@ -255,65 +316,6 @@ danmuke-player 内置了默认的弹幕层, 其弹幕的播放方式为从右到
 [https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDmkTrack.ts](https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDmkTrack.ts)
 [https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDanmuke.ts](https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDanmuke.ts)
 
-# DanmukePlayer API
-
-### danmukePlayer.start()
-
-    播放弹幕
-
-### danmukePlayer.stop()
-
-    停止播放弹幕
-
-### danmukePlayer.reset()
-
-    弹幕清屏
-
-### danmukePlayer.dataToView()
-
-    生成弹幕节点
-
-### danmukePlayer.clean()
-
-    清除弹幕状态为deaded 的弹幕对应的弹幕节点
-
-### danmukePlayer.addDmkLayer(layer: DmkLayer, name: string)
-
-    添加自定义弹幕层
-
-#### 参数
-    layer: 弹幕层实例
-    name: 弹幕层名称
-
-### danmukePlayer.setHooks(key: string, hookFn: Function)
-    
-    添加钩子函数
-    
-```javascript
-danmukePlayer.setHooks('beforeFrame', function(ctrl: DmkCtrl) { // beforeFrame 在弹幕下一帧播放前执行
-    console.log('beforeFrame ...')
-})
-
-danmukePlayer.setHooks('afterFrame', function(ctrl: DmkCtrl) { // afterFrame 在弹幕下一帧播放后执行
-    console.log('afterFrame ...')
-})
-```
-
-### danmukePlayer.deleteDmk(id: string)
-
-    根据弹幕id删除弹幕
-
-### danmukePlayer.getActiveDmks()
-    
-    获取所有正在播放中的弹幕
-
-### danmukePlayer.getSortedLayerList()
-    
-    返回包含所有弹幕层的数组，数组里的弹幕层已按弹幕层的priority排好序
-
-### danmukePlayer.addDmkList(danmukeList) 
-    
-    添加弹幕数据
 
 ### demo d地址
 
