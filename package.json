@@ -1,6 +1,6 @@
 {
   "name": "danmuke-player",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A danmuke player",
   "main": "dist/index.js",
   "directories": {},
@@ -18,6 +18,10 @@
     "angular"
   ],
   "author": "nicholasking0816",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholasking0816/danmuke-player"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/react": "18.0.15",

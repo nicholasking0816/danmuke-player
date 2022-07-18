@@ -51,7 +51,7 @@ export class DanmukePlayer {
         }
     }
 
-    addDmkLayer(layer: DmkLayer, name) {
+    addDmkLayer(layer: DmkLayer, name: string) {
         this._dmkCtrl.addLayer(layer, name);
     }
 
@@ -67,7 +67,26 @@ export class DanmukePlayer {
         return this._dmkCtrl;
     }
 
-    
+    reset() {
+        this._dmkCtrl.reset()
+    }
+
+    setHooks(key: string, hookFn: Function) {
+        this._dmkCtrl.setHooks(key, hookFn);
+    }
+
+    deleteDmk(id) {
+        this._dmkCtrl.deleteDmk(id);
+    }
+
+    getActiveDmks() {
+        this._dmkCtrl.getActiveDmks();
+    }
+
+    getSortedLayerList() {
+        this._dmkCtrl.getSortedLayerList();
+    }
+
     addDmkList(danmukeList: any[]) {
         this._dmkCtrl.addDmkList(danmukeList);
     }
