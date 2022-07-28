@@ -1,6 +1,6 @@
 {
   "name": "danmuke-player",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A danmuke player",
   "main": "dist/index.js",
   "directories": {},
@@ -13,6 +13,7 @@
   "keywords": [
     "danmuke",
     "video",
+    "弹幕",
     "react",
     "vue",
     "angular"

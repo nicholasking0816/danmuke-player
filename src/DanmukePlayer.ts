@@ -51,6 +51,13 @@ export class DanmukePlayer {
         }
     }
 
+    cleanAll() {
+        this._dmkViewNodeMap.forEach(node => {
+            this._videoWrapper.removeChild(node);
+        })
+        this._dmkViewNodeMap.clear();
+    }
+
     addDmkLayer(layer: DmkLayer, name: string) {
         this._dmkCtrl.addLayer(layer, name);
     }
@@ -68,7 +75,8 @@ export class DanmukePlayer {
     }
 
     reset() {
-        this._dmkCtrl.reset()
+        this._dmkCtrl.reset();
+        this.cleanAll();
     }
 
     setHooks(key: string, hookFn: Function) {

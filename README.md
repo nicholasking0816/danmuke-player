@@ -100,7 +100,10 @@ video.onpause = () => {
 
 ### danmukePlayer.clean()
 
-    清除弹幕状态为deaded 的弹幕对应的弹幕节点
+    清除弹幕状态为deaded 的弹幕对应的dom节点
+
+### danmukePlayer.cleanAll()
+    清除所有弹幕
 
 ### danmukePlayer.addDmkLayer(layer: DmkLayer, name: string)
 
@@ -317,6 +320,8 @@ danmuke-player 内置了默认的弹幕层, 其弹幕的播放方式为从右到
 [https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDanmuke.ts](https://github.com/nicholasking0816/danmuke-player/blob/main/src/AnmDanmuke.ts)
 
 
-### demo d地址
+### demo 地址
 
 [https://github.com/nicholasking0816/danmuke-player-demo](https://github.com/nicholasking0816/danmuke-player-demo)
+
+## 如有问题，请邮件联系!! 邮箱：nicholasking0816@163.com
