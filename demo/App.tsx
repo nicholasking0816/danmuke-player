@@ -88,7 +88,6 @@ export class App extends React.Component<any, any, any> {
             trackCount: 1
         }), 'AdvanceLayer')
         this.videoRef.current.onplay = () => {
-            console.log('start ...')
             this.player.start();
         }
         this.videoRef.current.onpause = () => {

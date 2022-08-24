@@ -1,7 +1,7 @@
-import { IDmkData } from './interface/IDmkDate.interface';
-import { Danmuke } from "./Danmuke";
+import { IDmkData } from '../../interface/IDmkDate.interface';
+import { Danmuke } from "../../Danmuke";
 import { AnmDmkTrack } from './AnmDmkTrack';
-import { DmkCtrl } from './DmkCtrl';
+import { DmkCtrl } from '../../DmkCtrl';
 
 export class AnmDanmuke extends Danmuke {
   originLeft: number;

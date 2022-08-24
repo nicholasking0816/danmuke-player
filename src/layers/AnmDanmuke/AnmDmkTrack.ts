@@ -1,11 +1,11 @@
 import { AnmDanmuke } from './AnmDanmuke';
-import { DmkUtil } from './DmkUtil';
-import { IDmkFrame } from './interface/IDmkFrame.interface';
-import { IDmkData } from "./interface/IDmkDate.interface";
-import { Danmuke } from "./Danmuke";
-import { DmkCtrl } from "./DmkCtrl";
-import { DmkTrack } from "./DmkTrack";
-import { DmkLayer } from './DmkLayer';
+import { DmkUtil } from '../../DmkUtil';
+import { IDmkFrame } from '../../interface/IDmkFrame.interface';
+import { IDmkData } from "../../interface/IDmkDate.interface";
+import { Danmuke } from "../../Danmuke";
+import { DmkCtrl } from "../../DmkCtrl";
+import { DmkTrack } from "../../DmkTrack";
+import { DmkLayer } from '../../DmkLayer';
 
 declare const window: any;
 

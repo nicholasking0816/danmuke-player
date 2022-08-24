@@ -7,12 +7,12 @@ import { IVideo } from "./interface/IVideo.interface";
 
 export class DanmukePlayer {
     private _dmkCtrl: DmkCtrl;
-    private _videoWrapper: HTMLElement;
+    private _container: HTMLElement;
     private _dmkViewNodeMap: Map<Danmuke, HTMLElement> = new Map();
 
     constructor(video: IVideo, opt?: IDmkOpt, dmkList?: IDmkData[]) {
         this._dmkCtrl = new DmkCtrl(dmkList || [], opt || {}, video);
-        this._videoWrapper = video.videoInstance.parentNode;
+        this._container = video.container || video.videoInstance.parentNode;
         this._dmkCtrl.setHooks('afterFrame', () => {
             this.dataToView();
             this.clean();
@@ -21,6 +21,7 @@ export class DanmukePlayer {
     }
 
     dataToView() {
+        let fragment = document.createDocumentFragment()
         this._dmkCtrl.getSortedLayerList().forEach((layer: DmkLayer, index: number) => {
             const danmkes = layer.getAllDmk();
             danmkes.forEach((danmuke: Danmuke) => {
@@ -34,10 +35,11 @@ export class DanmukePlayer {
                     dmkNode.innerText = danmuke.content;
                     Object.assign(dmkNode.style, danmuke.styles);
                     this._dmkViewNodeMap.set(danmuke, dmkNode);
-                    this._videoWrapper.appendChild(dmkNode);
+                    fragment.appendChild(dmkNode);
                 }
             })
         })
+        this._container.appendChild(fragment);
     }
 
     clean() {
@@ -45,7 +47,7 @@ export class DanmukePlayer {
         for(let danmuke of keys) {
             if (danmuke.isDead()) {
                 const node: HTMLElement = this._dmkViewNodeMap.get(danmuke);
-                this._videoWrapper.removeChild(node);
+                this._container.removeChild(node);
                 this._dmkViewNodeMap.delete(danmuke);
             }
         }
@@ -53,7 +55,7 @@ export class DanmukePlayer {
 
     cleanAll() {
         this._dmkViewNodeMap.forEach(node => {
-            this._videoWrapper.removeChild(node);
+            this._container.removeChild(node);
         })
         this._dmkViewNodeMap.clear();
     }

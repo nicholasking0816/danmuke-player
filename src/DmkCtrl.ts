@@ -1,15 +1,14 @@
 import { DefaultDmkCtrOpt } from './constantData';
 import { IVideo } from './interface/IVideo.interface';
-import { IDmkFrame } from './interface/IDmkFrame.interface';
 import { DmkFragment } from './DmkFragment';
 import { DmkUtil } from './DmkUtil';
 import { IDmkData } from './interface/IDmkDate.interface';
 import { IDmkOpt } from './interface/IDmkOpt.interface';
 import { DmkLayer } from './DmkLayer';
-import { AnmDmkTrack } from './AnmDmkTrack';
-import { StaticDmkTrack } from './StaticDmkTrack';
 import { Danmuke } from './Danmuke';
 import { DmkTrack } from './DmkTrack';
+import { AnmDmkTrack } from './layers/AnmDanmuke/AnmDmkTrack';
+import { StaticDmkTrack } from './layers/StaticDanmuke/StaticDmkTrack';
 export class DmkCtrl {
   private _timeFrozen: Function;
   private _frameRecord = 0;

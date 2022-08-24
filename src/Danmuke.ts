@@ -1,6 +1,5 @@
 import { DmkCtrl } from './DmkCtrl';
 import { DmkTrack } from './DmkTrack';
-import { IDmkData } from './interface/IDmkDate.interface';
 import { IDmkFrame } from './interface/IDmkFrame.interface';
 export abstract class Danmuke implements IDmkFrame {
   isInView: boolean = false;
@@ -10,8 +9,8 @@ export abstract class Danmuke implements IDmkFrame {
   opt: any;
   styles: any;
   _isDead: boolean;
-  dmkData: IDmkData;
-  constructor(dmkData: IDmkData, track: DmkTrack, ctrl: DmkCtrl) {
+  dmkData: any;
+  constructor(dmkData: any, track: DmkTrack, ctrl: DmkCtrl) {
     this.dmkData = dmkData;
     this.content = dmkData.content;
     this.track = track;

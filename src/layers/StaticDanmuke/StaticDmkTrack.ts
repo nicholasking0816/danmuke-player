@@ -1,9 +1,9 @@
 import { StaticDanmuke } from './StaticDanmuke';
-import { DmkCtrl } from './DmkCtrl';
-import { IDmkData } from "./interface/IDmkDate.interface";
-import { DmkTrack } from "./DmkTrack";
-import { Danmuke } from './Danmuke';
-import { DmkLayer } from './DmkLayer';
+import { DmkCtrl } from '../../DmkCtrl';
+import { IDmkData } from "../../interface/IDmkDate.interface";
+import { DmkTrack } from "../../DmkTrack";
+import { Danmuke } from '../../Danmuke';
+import { DmkLayer } from '../../DmkLayer';
 
 export class StaticDmkTrack extends DmkTrack {
   canShow = true;
